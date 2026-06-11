@@ -1,41 +1,30 @@
 # Adaptive Secure Overlay WireGuard
 
-WireGuard compatibility track for Adaptive Secure Overlay.
+![Adaptive Secure Overlay](assets/banner.svg)
 
-This repository is reserved for future experiments where Adaptive Secure
-Overlay logic is applied to WireGuard-oriented configuration, key-distribution,
-or compatibility workflows without changing the organization into a
-WireGuard-only project.
+[![Track](https://img.shields.io/badge/track-wireguard-0f172a?style=for-the-badge)](https://github.com/Adaptive-Secure-Overlay)
+[![Role](https://img.shields.io/badge/role-compatibility-0f766e?style=for-the-badge)](https://github.com/Adaptive-Secure-Overlay/adaptive-secure-overlay-wireguard)
+[![Status](https://img.shields.io/badge/status-research%20placeholder-15803d?style=for-the-badge)](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay)
 
-## Position in the repository family
+WireGuard compatibility track for Adaptive Secure Overlay concept exploration.
 
-- [adaptive-ipsec-overlay](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay):
-  active hub for the current IPsec track.
-- [adaptive-ipsec-overlay-linux](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-linux):
-  Linux package and lab reference path.
-- [adaptive-ipsec-overlay-openwrt](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-openwrt):
-  OpenWRT package path.
-- [adaptive-ipsec-overlay-routeros7](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-routeros7):
-  RouterOS 7 relay profile.
-- [adaptive-secure-overlay-windows](https://github.com/Adaptive-Secure-Overlay/adaptive-secure-overlay-windows):
-  future Windows endpoint/client branch.
+## Repository family
+
+| Repository | Focus |
+| --- | --- |
+| [adaptive-ipsec-overlay](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay) | Active IPsec track and source of truth |
+| [adaptive-ipsec-overlay-linux](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-linux) | Linux endpoint + intermediate package |
+| [adaptive-ipsec-overlay-openwrt](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-openwrt) | OpenWRT endpoint + intermediate package |
+| [adaptive-ipsec-overlay-routeros7](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-routeros7) | RouterOS 7 intermediate relay |
+| [adaptive-secure-overlay-windows](https://github.com/Adaptive-Secure-Overlay/adaptive-secure-overlay-windows) | Windows service/client path |
 
 ## Planned scope
 
-- Overlay-assisted setup flows for WireGuard-oriented deployments.
-- Compatibility experiments for config distribution and key-routing logic.
-- Shared direction with the wider Adaptive Secure Overlay architecture.
-- Protocol-family expansion without losing the current IPsec research baseline.
-
-## Why it exists
-
-Adaptive Secure Overlay is intentionally wider than one secure transport. The
-current public implementation is IPsec-focused, but this repository keeps a
-clear branch for future WireGuard-oriented work and broader compatibility
-research.
+- Overlay-assisted session setup experiments for WireGuard-oriented flows
+- Control-plane compatibility and configuration forwarding patterns
+- Protocol-agnostic abstractions for route planning and relay selection
+- Shared policy and security model with the IPsec track
 
 ## Status
 
-Public track placeholder. This branch exists to show direction and repository
-structure while the current implementation effort stays centered on the IPsec
-lab path.
+Research branch placeholder. Current work focus remains on IPsec implementation in Linux/OpenWRT/RouterOS, while this branch captures the future portability direction.
