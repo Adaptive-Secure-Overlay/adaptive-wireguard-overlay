@@ -1,0 +1,67 @@
+{
+  "receipt_id": "candidate-development-wireguard-python3147-20260908-01",
+  "command_id": "platform-python3147-global-migration-20260908-01-candidate",
+  "created_at": "2026-09-08T18:22:36+03:00",
+  "scope": "C:\\Codex\\Candidate\\Development-WireGuard",
+  "runtime": {
+    "expected_executable": "C:\\Users\\vlado\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "observed_executable": "C:\\Users\\vlado\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "expected_version": "3.14.7",
+    "observed_version": "3.14.7",
+    "build": "3.14.7 (tags/v3.14.7:823f032, Aug 5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+    "architecture": "AMD64",
+    "pointer_bits": 64,
+    "expected_sha256": "4942B86A6597E5AEE0128DAA00050ED79BC21F6E709A78EB19CBFEB0C2F39AC9",
+    "observed_sha256": "4942B86A6597E5AEE0128DAA00050ED79BC21F6E709A78EB19CBFEB0C2F39AC9",
+    "hash_match": true
+  },
+  "normal_user_python": {
+    "resolved_executable": "C:\\Users\\vlado\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+    "version": "3.14.7",
+    "same_as_explicit_runtime": true,
+    "cutover_required": false,
+    "cutover_performed": false
+  },
+  "validation": {
+    "explicit_interpreter_used": true,
+    "pythonpath": "C:\\Codex\\Candidate\\Development-WireGuard\\src",
+    "dont_write_bytecode": true,
+    "compile": {
+      "method": "builtins.compile in memory",
+      "passed": 15,
+      "total": 15,
+      "exit_code": 0
+    },
+    "unit_tests": {
+      "command": "-m unittest discover -s tests -p test_*.py -v",
+      "passed": 25,
+      "total": 25,
+      "exit_code": 0
+    },
+    "prior_package_manifest": {
+      "path": "docs/TRUST-REGISTRY-CHECKPOINT-20260903.sha256",
+      "entries_verified": 42,
+      "entries_total": 42,
+      "manifest_sha256": "ecd38db40fac915d0068be11dcfae1ef1221789ba6940f039fa9915e0272ee7a"
+    }
+  },
+  "preservation": {
+    "source_code_changed": false,
+    "prior_receipts_deleted_or_replaced": false,
+    "eve_ng_started_or_changed": false,
+    "wireguard_or_vpn_started_or_changed": false,
+    "network_or_services_changed": false,
+    "path_or_working_environment_changed": false,
+    "usable_as_ipsec_dissertation_evidence": false
+  },
+  "preserved_receipts": [
+    "docs/VALIDATION-RESULT.md",
+    "docs/TRUST-REGISTRY-CHECKPOINT-20260903.json",
+    "docs/TRUST-REGISTRY-CHECKPOINT-20260903.sha256"
+  ],
+  "comparison_sources": [
+    "C:\\Codex\\Platform\\PluginsSkills\\python3147-migration\\PYTHON_3147_PHASE1_MATRIX_2026-09-08.json",
+    "C:\\Codex\\Platform\\Center\\PYTHON_3147_GLOBAL_MIGRATION_2026-09-08.md"
+  ],
+  "status": "accepted_no_cutover_required"
+}

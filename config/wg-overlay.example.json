@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "protocol": "wireguard",
+  "mode": "control-plane-overlay-data-plane-direct",
+  "local_node": "A",
+  "nodes": {
+    "A": { "overlay_address": "192.0.2.10", "overlay_port": 9000 },
+    "X1": { "overlay_address": "198.51.100.11", "overlay_port": 9000 },
+    "X2": { "overlay_address": "203.0.113.12", "overlay_port": 9000 },
+    "B": { "overlay_address": "192.0.2.20", "overlay_port": 9000 }
+  },
+  "routes": [
+    { "source": "A", "destination": "B", "hops": ["X1", "X2"] },
+    { "source": "B", "destination": "A", "hops": ["X2", "X1"] }
+  ],
+  "wireguard": {
+    "capture": {
+      "endpoint_port": 51820,
+      "allowed_message_types": [1, 2, 3],
+      "transport_type": 4,
+      "loop_prevention": "implementation-required"
+    },
+    "trust_registry": {
+      "registry_id": "candidate-wireguard-nodes",
+      "state_directory": "<runtime-state-directory>",
+      "signature_algorithm": "sshsig-ed25519",
+      "signature_namespace": "wg-node-registry-v1",
+      "trust_anchor": {
+        "key_id": "candidate-root-2026-01",
+        "public_key_file": "<out-of-band-pinned-ssh-ed25519-public-key-file>"
+      }
+    }
+  },
+  "limits": {
+    "max_payload_bytes": 65535,
+    "max_pending_datagrams": 64,
+    "route_ttl_seconds": 30
+  }
+}

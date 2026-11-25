@@ -1,30 +1,26 @@
-# Adaptive Secure Overlay WireGuard
+# Adaptive WireGuard Overlay
 
-![Adaptive Secure Overlay](assets/banner.svg)
+![Adaptive WireGuard Overlay](assets/banner.png)
 
-[![Track](https://img.shields.io/badge/track-wireguard-0f172a?style=for-the-badge)](https://github.com/Adaptive-Secure-Overlay)
-[![Role](https://img.shields.io/badge/role-compatibility-0f766e?style=for-the-badge)](https://github.com/Adaptive-Secure-Overlay/adaptive-secure-overlay-wireguard)
-[![Status](https://img.shields.io/badge/status-research%20placeholder-15803d?style=for-the-badge)](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay)
+[![English version](https://img.shields.io/badge/language-English-0f172a?style=flat-square)](README.md) [![Русская версия](https://img.shields.io/badge/language-Русская%20версия-0369a1?style=flat-square)](README.ru.md) [![Trust Registry](https://img.shields.io/badge/trust%20registry-Ed25519%20SSHSIG-15803d?style=flat-square)](docs/TRUST-REGISTRY-VALIDATION-2026-09-03.md)
 
-WireGuard compatibility track for Adaptive Secure Overlay concept exploration.
+Open-source research implementation of routed WireGuard handshake establishment (`WG type 1/2/3` via intermediate relays `A -> X1 -> X2 -> B`) followed by direct encrypted data-plane traffic (`WG type 4: A === B`), plus **Ed25519 signed trust registry** (`v0.2.0`) and **MCC E2E authentication/privacy** tracks.
 
-## Repository family
+## Architecture & Components
 
-| Repository | Focus |
-| --- | --- |
-| [adaptive-ipsec-overlay](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay) | Active IPsec track and source of truth |
-| [adaptive-ipsec-overlay-linux](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-linux) | Linux endpoint + intermediate package |
-| [adaptive-ipsec-overlay-openwrt](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-openwrt) | OpenWRT endpoint + intermediate package |
-| [adaptive-ipsec-overlay-routeros7](https://github.com/Adaptive-Secure-Overlay/adaptive-ipsec-overlay-routeros7) | RouterOS 7 intermediate relay |
-| [adaptive-secure-overlay-windows](https://github.com/Adaptive-Secure-Overlay/adaptive-secure-overlay-windows) | Windows service/client path |
+- `src/wg_handshake_overlay/` — framing parser, protocol adapter, route cache, fail-closed engine, signed Ed25519 trust registry, and 27-scenario model.
+- `tests/` — unit & negative-matrix tests (forward/reverse routing, privacy, TTL, duplicates, signatures, anti-rollback, atomic recovery).
+- `research/ike-privacy-20261014/` — MCC privacy layer (`mcc_privacy.py`) and local test suite.
+- `research/mcc-e2e-20261015/` — MCC E2E authenticated control-plane (`mcc_auth.py`, `mcc_e2e.py`, `trust_registry.py`, integration harness, overhead benchmarks).
+- `docs/` & `schemas/` — architecture specs, threat model, rollback boundaries, EVE-NG test contracts, and JSON schemas.
+- `config/wg-overlay.example.json` — RFC documentation addresses and placeholder public keys only.
 
-## Planned scope
+## Local Validation
 
-- Overlay-assisted session setup experiments for WireGuard-oriented flows
-- Control-plane compatibility and configuration forwarding patterns
-- Protocol-agnostic abstractions for route planning and relay selection
-- Shared policy and security model with the IPsec track
+```bash
+bash scripts/validate-local.sh
+# or on Windows PowerShell:
+pwsh -File scripts/validate-local.ps1
+```
 
-## Status
-
-Research branch placeholder. Current work focus remains on IPsec implementation in Linux/OpenWRT/RouterOS, while this branch captures the future portability direction.
+Uses Python stdlib and local OpenSSH `ssh-keygen` for temporary Ed25519 SSHSIG signatures; opens no live network sockets and modifies no host configuration.

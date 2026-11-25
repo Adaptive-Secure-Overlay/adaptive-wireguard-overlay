@@ -1,0 +1,83 @@
+{
+  "checkpoint_id": "candidate-trust-registry-20260903-01",
+  "created_at": "2026-09-03T13:32:04+03:00",
+  "package": {
+    "name": "wg-handshake-overlay",
+    "version": "0.2.0",
+    "registry_schema_version": 1,
+    "git_revision": null,
+    "integrity_manifest": "docs/TRUST-REGISTRY-CHECKPOINT-20260903.sha256"
+  },
+  "validation": {
+    "runtime": "Python 3.14.2",
+    "signature_runtime": "OpenSSH_for_Windows_9.5p2",
+    "command": "pwsh -NoProfile -File scripts/validate-local.ps1",
+    "exit_code": 0,
+    "unit_tests": {
+      "passed": 25,
+      "total": 25
+    },
+    "trust_registry_tests": {
+      "passed": 9,
+      "total": 9
+    },
+    "adapter_tests": {
+      "passed": 5,
+      "total": 5
+    },
+    "model_cases": {
+      "passed": 27,
+      "total": 27
+    },
+    "python_311_syntax_files": {
+      "passed": 15,
+      "total": 15
+    },
+    "config_json_valid": true,
+    "registry_schema_json_valid": true,
+    "secret_pattern_matches": 0,
+    "network_or_privileged_actions_performed": false
+  },
+  "security_result": {
+    "finding": "remote_public_key_substitution_without_signed_registry",
+    "previous_result": "accept",
+    "current_result": "reject_before_route_and_daemon_send",
+    "valid_higher_version_update": "accept",
+    "rollback_or_equal_version": "reject",
+    "corrupt_active_copy": "recover_highest_valid_signed_version"
+  },
+  "confirmed_scope": [
+    "pinned OpenSSH Ed25519 public trust root",
+    "strict canonical signed node registry",
+    "bad, missing and unknown signature rejection",
+    "monotonic version and anti-rollback",
+    "atomic active and last-valid persistence",
+    "authenticated route and daemon key-release gates",
+    "WireGuard types 1/2/3 overlay and type 4 direct bypass"
+  ],
+  "unconfirmed_scope": [
+    "Python 3.11 runtime execution",
+    "Linux capture/inject/firewall backend",
+    "kernel WireGuard",
+    "EVE-NG trust-registry negative matrix",
+    "live rekey, concurrent-start and timing evidence"
+  ],
+  "evidence_refs": [
+    "docs/TRUST-REGISTRY-VALIDATION-2026-09-03.md",
+    "docs/TRUST-REGISTRY-MAKE-OR-BUY.md",
+    "docs/EVE-NG-TRUST-REGISTRY-TEST-CONTRACT.md",
+    "docs/VALIDATION-RESULT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/adapter-api.md",
+    "docs/THREAT-MODEL-ROLLBACK.md",
+    "scripts/Test-TrustRegistry.ps1",
+    "scripts/validate-local.ps1",
+    "schemas/trust-registry.schema.json",
+    "src/wg_handshake_overlay/trust_registry.py",
+    "src/wg_handshake_overlay/routing.py",
+    "src/wg_handshake_overlay/adapter.py",
+    "tests/test_trust_registry.py",
+    "tests/test_adapter.py"
+  ],
+  "stage_status": "completed_local_authenticated_registry"
+}

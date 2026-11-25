@@ -1,0 +1,8 @@
+# Project-private runtime only; do not install into OS Python.
+# Interpreter: CPython 3.14.8, normal GIL build.
+pip==26.2.1
+cryptography==50.0.2
+cffi==2.1.1
+pycparser==3.11
+pexpect==4.9.0
+ptyprocess==0.7.0

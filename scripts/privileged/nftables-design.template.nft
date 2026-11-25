@@ -1,0 +1,20 @@
+# NON-EXECUTABLE DESIGN TEMPLATE — DO NOT APPLY
+#
+# MANUAL-APPROVAL GATE:
+# 1) Owner reviews a concrete derivative for an isolated EVE-NG lab.
+# 2) Owner records namespace/interface and rollback procedure.
+# 3) Owner applies the reviewed derivative outside this repository.
+#
+# Intent only:
+# - divert outbound UDP for an approved WG endpoint into a local adapter;
+# - exempt adapter-injected datagrams by loop-prevention marking;
+# - never divert WG type 4 transport packets;
+# - scope matchers to an isolated test interface/namespace;
+# - remove only rules created by the lab owner after checkpoint recovery.
+#
+# Deliberately non-actionable placeholders:
+# <isolated-test-interface>
+# <approved-wireguard-port>
+# <adapter-local-port>
+# <adapter-loop-prevention-mark>
+# <isolated-test-address>

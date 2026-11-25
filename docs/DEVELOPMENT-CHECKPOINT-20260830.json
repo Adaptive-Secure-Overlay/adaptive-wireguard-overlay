@@ -1,0 +1,64 @@
+{
+  "checkpoint_id": "candidate-close-development-20260830-01",
+  "created_at": "2026-08-30T16:28:06+03:00",
+  "package": {
+    "name": "wg-handshake-overlay",
+    "version": "0.1.0",
+    "result_schema_version": 1,
+    "git_revision": null,
+    "integrity_manifest": "docs/DEVELOPMENT-CHECKPOINT-20260830.sha256"
+  },
+  "validation": {
+    "runtime": "Python 3.14.2",
+    "command": "scripts/validate-local.ps1",
+    "exit_code": 0,
+    "unit_tests": {
+      "passed": 14,
+      "total": 14
+    },
+    "model_cases": {
+      "passed": 27,
+      "total": 27,
+      "series": {
+        "bidir12": 2,
+        "disjoint5": 5,
+        "ring10": 10,
+        "reverse5": 10
+      }
+    },
+    "invariant": "WireGuard types 1/2/3 use overlay; type 4 is DIRECT_BYPASS only",
+    "config_json_valid": true,
+    "result_schema_json_valid": true,
+    "secret_material_assignments_found": 0,
+    "network_or_privileged_actions_performed": false
+  },
+  "confirmed_scope": [
+    "WireGuard framing parser",
+    "protocol adapter",
+    "deterministic forward and reverse routing",
+    "TTL and duplicate suppression",
+    "privacy view and fail-closed handling",
+    "canonical 27-case in-memory model"
+  ],
+  "unconfirmed_scope": [
+    "Linux capture/inject/firewall backend",
+    "kernel WireGuard",
+    "nftables or TPROXY",
+    "EVE-NG handshake and data plane",
+    "rekey, concurrent-start and timing evidence"
+  ],
+  "evidence_refs": [
+    "docs/DEVELOPMENT-CLOSURE-2026-08-30.md",
+    "docs/VALIDATION-RESULT.md",
+    "docs/ARCHITECTURE.md",
+    "docs/adapter-api.md",
+    "docs/EVE-NG-TEST-CONTRACT.md",
+    "docs/THREAT-MODEL-ROLLBACK.md",
+    "docs/LOCAL-VALIDATION.md",
+    "scripts/validate-local.ps1",
+    "schemas/eve-result.schema.json",
+    "src/wg_handshake_overlay",
+    "tests"
+  ],
+  "stage_status": "completed_local_reference_package"
+}
