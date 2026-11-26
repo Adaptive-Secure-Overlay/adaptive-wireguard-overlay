@@ -12,6 +12,7 @@ Open-source research implementation of routed WireGuard handshake establishment 
 - `tests/` — unit & negative-matrix tests (forward/reverse routing, privacy, TTL, duplicates, signatures, anti-rollback, atomic recovery).
 - `research/ike-privacy-20261014/` — MCC privacy layer (`mcc_privacy.py`) and local test suite.
 - `research/mcc-e2e-20261015/` — MCC E2E authenticated control-plane (`mcc_auth.py`, `mcc_e2e.py`, `trust_registry.py`, integration harness, overhead benchmarks).
+- `linux-kernel-wg-backend/` — live Linux kernel `wg0` + Python MCC overlay backend (`wan_py_wg_daemon.py`, Dual-NAT roaming wrapper `wan_py_daemon.py`, parameterized `nftables` `@th,64,32` redirect/`notrack` rules, RFC 5737 Docker Compose template, and 4-node WAN verification results).
 - `docs/` & `schemas/` — architecture specs, threat model, rollback boundaries, EVE-NG test contracts, and JSON schemas.
 - `config/wg-overlay.example.json` — RFC documentation addresses and placeholder public keys only.
 

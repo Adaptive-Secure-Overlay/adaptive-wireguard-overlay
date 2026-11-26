@@ -1,0 +1,60 @@
+# Example RFC 5737 Docker Compose topology for isolated Python MCC + Linux Kernel WireGuard (wg0)
+# Replace 192.0.2.x placeholders and mount per-node Trust Registry v2 keys (0600) in your private lab.
+
+name: adaptive-py-kernel-wg-example
+services:
+  node-a-wg-endpoint:
+    build:
+      context: ..
+      dockerfile: linux-kernel-wg-backend/Dockerfile.endpoint
+    container_name: py-wg-node-a
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    sysctls:
+      net.ipv4.ip_nonlocal_bind: "1"
+      net.ipv4.conf.all.accept_local: "1"
+      net.ipv4.conf.all.rp_filter: "0"
+      net.ipv4.conf.default.rp_filter: "0"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      OVERLAY_ACTIVE_USERS: "A,X1,X2,B"
+      PRECONNECT_ENABLED: "1"
+      IKE_MCC_ENABLED: "1"
+      IKE_MCC_ACCEPT_MODE: "first"
+      IKE_MCC_X1_FANOUT: "2"
+      IKE_MCC_X2_FANOUT: "2"
+      IKE_MCC_IKE_FANOUT: "1"
+      IKE_DEBUG_FORCE_X1: "X1"
+      OVERLAY_DEPRIORITIZE_X1: "B"
+      WG_OVERLAY_PORT: "4500"
+      IKE_CASCADE_TRUST_REGISTRY_FILE: "/state/trust-registry-v2.json"
+      IKE_CASCADE_TRUST_ROOT_FILE: "/state/trust-root.json"
+      MCC_SIGNING_KEY_FILE: "/run/pykeys/signing.key"
+      MCC_ENCRYPTION_KEY_FILE: "/run/pykeys/encryption.key"
+      MCC_REPLAY_STATE_FILE: "/state/db/A.sqlite"
+    volumes:
+      - ./example-state:/state
+    ports:
+      - "4500:4500/udp"
+    networks:
+      py_wg_example_net:
+        ipv4_address: 198.51.100.10
+    command:
+      - python3
+      - -u
+      - /app/wan_py_wg_daemon.py
+      - --name
+      - A
+      - --ike-proxy
+      - --ike-default-dst
+      - B
+      - --ike-local-ip
+      - 198.51.100.10
+
+networks:
+  py_wg_example_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 198.51.100.0/24

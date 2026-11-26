@@ -68,7 +68,8 @@ bash scripts/validate-local.sh
 Реальный capture/inject/firewall backend и EVE-NG запуск требуют отдельного
 одобрения владельца изолированного тестового контура.
 
-## Исследовательские модули (октябрь 2026)
+## Исследовательские модули и Linux-бэкенд (октябрь–ноябрь 2026)
 
 - `research/ike-privacy-20261014/` — прототип приватности IKE/MCC (`mcc_privacy.py`) и локальные тесты.
 - `research/mcc-e2e-20261015/` — сквозная аутентификация и шифрование MCC E2E (`mcc_auth.py`, `mcc_e2e.py`, `trust_registry.py`, интеграционные тесты и бенчмарк накладных расходов).
+- `linux-kernel-wg-backend/` — живой Linux-бэкенд для ядерного `wg0` + Python MCC-оверлея (`wan_py_wg_daemon.py`, Dual-NAT адаптер `wan_py_daemon.py`, `nftables` с `notrack` для `Type 4`, RFC 5737 Docker Compose шаблон и результаты 4-узлового WAN-теста).
